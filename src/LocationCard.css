@@ -1,0 +1,36 @@
+.LocationCard {
+    min-width: 400px;
+    width: 400px;
+    height: 550px;
+    margin: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 2px;
+    background: rgba(66, 99, 81, 0.9);
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.LocationCard-title {
+    color: lightskyblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.LocationCard-photo {
+    width: 350px;
+    border-radius: 10px;
+}
+
+.LocationCard-description {
+    max-width: 100%;
+    margin: 10px;
+    color: aliceblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.LocationCard-button {
+    margin: 10px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    transform: scale(1,1);
+}

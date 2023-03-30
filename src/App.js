@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+// import DefaultPage from './DefaultPage';
+import Navbar from './Navbar';
+import LocationCard from './LocationCard';
+import locationsJson from './locationsJson';
 
 function App() {
+
+  const locationCards = locationsJson.map((locationItem) =>
+    <LocationCard
+      key={locationItem.id}
+      location={locationItem.location}
+      photo={locationItem.photo}
+      description={locationItem.description}
+    />)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {/* <DefaultPage /> */}
+      <div className='App-body'>
+        {locationCards}
+        <LocationCard
+          location='Random Pic'
+          photo='https://picsum.photos/350'
+          description='????? ????? ????? ????? ????? ????? ????? ????? ????? ????? ????? ????? ????? ????? ?????'
+        />
+      </div>
     </div>
   );
 }

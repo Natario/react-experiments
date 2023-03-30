@@ -1,0 +1,15 @@
+.Navbar {
+    display: flex;
+    background-color: grey;
+}
+
+.Navbar-title {
+    /* text-align: center; */
+    width: 100px;
+    color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.Navbar-logo {
+    height: 60px;
+}
