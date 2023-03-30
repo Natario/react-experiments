@@ -1,7 +1,7 @@
 .LocationCard {
     min-width: 400px;
     width: 400px;
-    height: 550px;
+    height: 600px;
     margin: 20px;
     border-style: solid;
     border-radius: 10px;
@@ -14,6 +14,10 @@
 .LocationCard-title {
     color: lightskyblue;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.LocationCard-photoContainer {
+    height: 400px;
 }
 
 .LocationCard-photo {

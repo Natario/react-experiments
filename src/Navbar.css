@@ -4,10 +4,10 @@
 }
 
 .Navbar-title {
-    /* text-align: center; */
-    width: 100px;
-    color: whitesmoke;
-    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 100%;
+    color: darkslateblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 .Navbar-logo {
