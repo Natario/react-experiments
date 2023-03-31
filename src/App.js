@@ -8,6 +8,7 @@ import { useState } from 'react';
 function App() {
 
   const [userName, setUserName] = useState('John')
+  const [city, setCity] = useState('Berlin')
 
   function clickHandler(event) {
       // turn text upside down (and vice versa)
@@ -21,6 +22,7 @@ function App() {
 
       // and then process name
       setUserName( event.target.previousSibling.value)
+      setCity( event.target.previousSibling.previousSibling.previousSibling.innerText)
     }
 
   const locationCards = locationsJson.map((locationItem) =>
@@ -34,7 +36,7 @@ function App() {
   
   return (
     <div className="App">
-      <Navbar name={userName}/>
+      <Navbar name={userName} city={city}/>
       {/* <DefaultPage /> */}
       <div className='App-body'>
         {locationCards}

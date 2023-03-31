@@ -20,8 +20,10 @@ function Navbar(props) {
   return (
     <div className="Navbar">
       <img src={logo} className="Navbar-logo" alt="logo" />
-      <h3 className="Navbar-title">Hi {props.name}! {characterName} is with you.</h3>
-      <button onClick={handleClick}>Next</button>
+      <div className="Navbar-content">
+        <h3 className="Navbar-title">Hi {props.name} from {props.city}! {characterName} is with you.</h3>
+        <button className="Navbar-button" onClick={handleClick}>Next character</button>
+      </div>
     </div>
   );
 
