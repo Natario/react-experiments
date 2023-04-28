@@ -17,20 +17,26 @@
 }
 
 .LocationCard-photoContainer {
-    height: 400px;
+    height: 280px;
 }
 
 .LocationCard-photo {
-    width: 350px;
+    max-width: 350px;
     border-radius: 10px;
 }
 
 .LocationCard-description {
+    height: 50px;
     max-width: 100%;
     margin: 10px;
     color: aliceblue;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.LocationCard-formContainer {
+    margin-top: 100px;
+}
+
 
 .LocationCard-button {
     margin: 10px;

@@ -3,25 +3,19 @@ import { useState, useEffect } from 'react';
 
 function LocationCard(props) {
 
-  const [berlinTemperature, setBerlinTemperature] = useState(0)
-  const [joke, setJoke] = useState([])
+  const [temperature, setTemperature] = useState(null)
 
+  // Get current weather for each location
   useEffect( function() {
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true')
-    .then(res => res.json())
-    .then(data => setBerlinTemperature(data.current_weather.temperature))
-  }, [])
+    if(props.latitude) {
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=' + props.latitude + '&longitude=' + props.longitude + '&current_weather=true')
+      .then(res => res.json())
+      .then(data => setTemperature(data.current_weather.temperature))
+    }
+  }, [props.latitude, props.longitude])
 
-  useEffect( function() {
-    fetch('https://v2.jokeapi.dev/joke/Any?type=twopart')
-    .then(res => res.json())
-    .then(data => setJoke([data.setup, data.delivery]))
-  }, [])
-
-
+  // assign random color to button  https://css-tricks.com/snippets/javascript/random-hex-color/
   function mouseEnterHandler(event) {
-      // assign random color to button
-      // https://css-tricks.com/snippets/javascript/random-hex-color/
       event.target.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16)
   }
 
@@ -29,22 +23,23 @@ function LocationCard(props) {
     <div className="LocationCard">
       <h2 className="LocationCard-title">{props.location}</h2>
       <div className="LocationCard-photoContainer">
-        <img src={props.photo} className="LocationCard-photo" alt="logo" />
-        <div className='LocationCard-description'>
-          <p>{props.description}</p>
-          <p>It's {berlinTemperature} ºC in Berlin now.</p>
-          <p>{joke[0]}</p>
-          <p>{joke[1]}</p>
-        </div>
+        <img src={props.photo} className="LocationCard-photo" alt="" />
       </div>
-      <input defaultValue={'John'}></input>
-      <button
-        className='LocationCard-button'
-        onClick={(event) => props.clickHandler(event)}
-        onMouseEnter={mouseEnterHandler}
-        onMouseLeave={mouseEnterHandler}>
-        Click to change name (and other things)
-      </button>
+      <div className='LocationCard-description'>
+        <p>{props.description}</p>
+        {props.description2 && <p>{props.description2}</p>}
+        {temperature && <p>It's {temperature} ºC in {props.location} now.</p>}
+      </div>
+      <div className="LocationCard-formContainer">
+        <input defaultValue={'John'}></input>
+        <button
+          className='LocationCard-button'
+          onClick={(event) => props.clickHandler(event)}
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseEnterHandler}>
+          Click to change name (and other things)
+        </button>
+      </div>
     </div>
   );
 }
