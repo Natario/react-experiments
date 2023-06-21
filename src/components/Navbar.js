@@ -1,5 +1,5 @@
 import './Navbar.css'
-import logo from './logo.svg'
+// import logo from '../logo.svg'
 import { useState, useEffect } from 'react';
 
 function Navbar(props) {
@@ -19,7 +19,8 @@ function Navbar(props) {
     
   return (
     <div className="Navbar">
-      <img src={logo} className="Navbar-logo" alt="logo" />
+      {/* <img src={logo} className="Navbar-logo" alt="logo" /> */}
+      <button className="Navbar-button" onClick={props.changeApp}>Change App</button>
       <div className="Navbar-content">
         <h3 className="Navbar-title">Hi {props.name} from {props.city}! {characterName} is with you.</h3>
         <button className="Navbar-button" onClick={handleClick}>Next character</button>

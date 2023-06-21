@@ -1,10 +1,11 @@
 import './App.css';
 // import DefaultPage from './DefaultPage';
-import Navbar from './Navbar';
-import LocationCard from './LocationCard';
-import locationsJson from './locationsJson';
 import { useState, useEffect } from 'react';
-import { NYT_API_KEY } from './apiKeys';
+import Navbar from './components/Navbar';
+import LocationCard from './components/LocationCard';
+import ToDoList from './components/ToDoList';
+import locationsJson from './data/locationsJson';
+import { NYT_API_KEY } from './data/apiKeys';
 
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
   const [city, setCity] = useState('Berlin')
   const [joke, setJoke] = useState('')
   const [news, setNews] = useState('')
+  const [currentApp, setCurrentApp] = useState(0)
 
+  const availableApps = ['ToDos', 'Locations']
 
   // Get random joke from API
   useEffect( function() {
@@ -45,7 +48,12 @@ function App() {
       // console.log(event.target);
       setUserName( event.target.previousSibling.value)
       setCity( event.target.parentNode.previousSibling.previousSibling.previousSibling.innerText)
-    }
+  }
+
+
+  function changeApp() {
+    setCurrentApp( (currentApp + 1) % availableApps.length)
+  }
 
 
   const locationCards = locationsJson.map((locationItem) =>
@@ -61,24 +69,31 @@ function App() {
   
   return (
     <div className="App">
-      <Navbar name={userName} city={city}/>
+      <Navbar name={userName} city={city} currentApp={currentApp} availableApps={availableApps} changeApp={changeApp}/>
       {/* <DefaultPage /> */}
       <div className='App-body'>
-        {locationCards}
-        <LocationCard
-          key={locationCards.length}
-          location='Random Pic and Joke'
-          photo='https://picsum.photos/350/250'
-          description={joke[0] + ' ' + joke[1]}
-          clickHandler={clickHandler}
-        />
-        <LocationCard
-          key={locationCards.length+1}
-          location='Most Viewed NYTimes Article'
-          description={news.title}
-          description2={ news.abstract}
-          clickHandler={clickHandler}
-        />
+        {availableApps[currentApp] === 'Locations' &&
+          <>
+            {locationCards}
+            <LocationCard
+              key={locationCards.length}
+              location='Random Pic and Joke'
+              photo='https://picsum.photos/350/250'
+              description={joke[0] + ' ' + joke[1]}
+              clickHandler={clickHandler}
+            />
+            <LocationCard
+              key={locationCards.length+1}
+              location='Most Viewed NYTimes Article'
+              description={news.title}
+              description2={ news.abstract}
+              clickHandler={clickHandler}
+            />
+          </>
+        }
+        {availableApps[currentApp] === 'ToDos' &&
+          <ToDoList/>
+        }
       </div>
     </div>
   );
