@@ -44,4 +44,5 @@
   max-width: 100vw;
   /* background-image: url(https://picsum.photos/1000); */
   background-size: auto;
+  justify-content: center;
 }
